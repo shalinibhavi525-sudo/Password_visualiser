@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Strength Visualizer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Password Strength Visualizer</h1>
+        <form method="POST">
+            <input type="password" name="password" placeholder="Enter your password..." required>
+            <button type="submit">Check Strength</button>
+        </form>
+
+        {% if strength is not none %}
+        <div class="result">
+            <h2>Result: {{ result }}</h2>
+            <p>Strength Score: {{ strength }} / 5</p>
+            {% if tips %}
+            <ul>
+                {% for tip in tips %}
+                <li>💡 {{ tip }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+  </html>
